@@ -8,10 +8,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - roy:/app
+      - iq:/app
     networks:
       - bridge-net
-      - roy-net
+      - iq-net
 
   db:
     image: postgres:latest
@@ -22,13 +22,13 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - roy-net
+      - iq-net
 
 volumes:
-  roy:
+  iq:
 
 networks:
   bridge-net:
     driver: bridge
-  roy-net:
-    name: roy-net
+  iq-net:
+    name: iq-net

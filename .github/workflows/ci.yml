@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  IMAGE_NAME: roy35/django-app
+  IMAGE_NAME: iqimran/python-app
 
 jobs:
 
