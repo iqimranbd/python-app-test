@@ -7,18 +7,25 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: myapp
+      app: python-app
   template:
     metadata:
       labels:
-        app: myapp
+        app: python-app
     spec:
       containers:
-        - name: myapp
-          image: iqimran/python-app:v1
+        - name: python-app
+          image: iqimran/python-app:v4
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 5000   # adjust to your app's port
+            - containerPort: 8000   # adjust to your app's port
+          env:
+          - name: SECRET_KEY
+            value: "helloworld"
+          - name: DEBUG
+            value: "True"
+          - name: ALLOWED_HOSTS
+          value: "*"
           resources:
             requests:
               cpu: "100m"
@@ -29,12 +36,12 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: 5000
+              port: 8000
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /
-              port: 5000
+              port: 8000
             initialDelaySeconds: 15
             periodSeconds: 20

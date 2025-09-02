@@ -6,9 +6,9 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: myapp
+    app: python-app
   ports:
     - name: http
       port: 80
-      targetPort: 5000   # match containerPort
+      targetPort: 8000   # match containerPort
       nodePort: 30080    # optional; must be within 30000–32767
